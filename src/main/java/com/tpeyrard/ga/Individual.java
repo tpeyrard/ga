@@ -8,7 +8,7 @@ public class Individual {
     private int fitness = 0;
 
     public void generateIndividual() {
-        for (int i = 0; i < size(); i++) {
+        for (int i = 0; i < genomeSize(); i++) {
             byte gene = (byte) Math.round(Math.random());
             genes[i] = gene;
         }
@@ -24,7 +24,7 @@ public class Individual {
         fitness = 0;
     }
 
-    public int size() {
+    public int genomeSize() {
         return genes.length;
     }
 
@@ -37,7 +37,7 @@ public class Individual {
 
     @Override
     public String toString() {
-        StringBuilder output = new StringBuilder(size());
+        StringBuilder output = new StringBuilder(genomeSize());
         for (byte gene : genes) {
             output.append(gene);
         }

@@ -26,7 +26,7 @@ public final class FitnessCalc {
 
     static int getFitness(Individual individual) {
         int fitness = 0;
-        for (int i = 0; i < individual.size() && i < solution.length; i++) {
+        for (int i = 0; i < individual.genomeSize() && i < solution.length; i++) {
             if (individual.geneAt(i) == solution[i]) {
                 fitness++;
             }
