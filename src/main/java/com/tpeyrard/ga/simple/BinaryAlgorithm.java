@@ -1,11 +1,11 @@
 package com.tpeyrard.ga.simple;
 
-import com.tpeyrard.ga.Algorithm;
+import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.Individual;
 import com.tpeyrard.ga.Population;
 
-public final class BinaryAlgorithm implements Algorithm {
+public final class BinaryAlgorithm implements GeneticAlgorithm {
 
     private static final double UNIFORM_RATE = 0.5;
     private static final double MUTATION_RATE = 0.015;
@@ -48,13 +48,13 @@ public final class BinaryAlgorithm implements Algorithm {
 
     private static void mutatePopulation(Population newPopulation, int elitismOffset) {
         for (int i = elitismOffset; i < newPopulation.size(); i++) {
-            mutate(((ByteIndividual) newPopulation.individualAt(i)));
+            mutate(((Genome) newPopulation.individualAt(i)));
         }
     }
 
 
     private static Individual crossover(Individual firstIndividual, Individual secondIndividual) {
-        Individual newSol = ByteIndividual.newIndividual();
+        Individual newSol = Genome.newIndividual();
         for (int i = 0; i < firstIndividual.genomeSize(); i++) {
             // Crossover
             if (Math.random() <= UNIFORM_RATE) {
@@ -66,7 +66,7 @@ public final class BinaryAlgorithm implements Algorithm {
         return newSol;
     }
 
-    private static void mutate(ByteIndividual indiv) {
+    private static void mutate(Genome indiv) {
         for (int i = 0; i < indiv.genomeSize(); i++) {
             if (Math.random() <= MUTATION_RATE) {
                 byte gene = (byte) Math.round(Math.random());

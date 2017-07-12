@@ -3,23 +3,23 @@ package com.tpeyrard.ga.simple;
 import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.Individual;
 
-public class ByteIndividual implements Individual {
+public class Genome implements Individual {
 
     private static final int DEFAULT_GENE_LENGTH = 64;
     private final byte[] genes;
     // Cache
     private int fitness = 0;
 
-    private ByteIndividual(byte[] genes) {
+    private Genome(byte[] genes) {
         this.genes = genes;
     }
 
-    public static ByteIndividual newIndividual() {
-        return new ByteIndividual(new byte[DEFAULT_GENE_LENGTH]);
+    public static Genome newIndividual() {
+        return new Genome(new byte[DEFAULT_GENE_LENGTH]);
     }
 
-    public static ByteIndividual newRandomIndividual() {
-        return new ByteIndividual(randomGenes());
+    public static Genome newRandomIndividual() {
+        return new Genome(randomGenes());
     }
 
     private static byte[] randomGenes() {
@@ -56,7 +56,7 @@ public class ByteIndividual implements Individual {
 
     @Override
     public void geneFrom(int index, Individual fromIndividual) {
-        setGene(index, ((ByteIndividual) fromIndividual).geneAt(index));
+        setGene(index, ((Genome) fromIndividual).geneAt(index));
     }
 
     @Override

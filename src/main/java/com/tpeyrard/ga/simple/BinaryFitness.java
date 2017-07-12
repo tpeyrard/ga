@@ -24,7 +24,7 @@ public final class BinaryFitness implements FitnessComputation {
     }
 
     @Override
-    public int getFitness(ByteIndividual individual) {
+    public int getFitness(Genome individual) {
         int fitness = 0;
         for (int i = 0; i < individual.genomeSize() && i < solution.length; i++) {
             if (individual.geneAt(i) == solution[i]) {

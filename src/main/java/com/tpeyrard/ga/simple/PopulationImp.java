@@ -4,18 +4,18 @@ import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.Individual;
 import com.tpeyrard.ga.Population;
 
-import static com.tpeyrard.ga.simple.ByteIndividual.newRandomIndividual;
+import static com.tpeyrard.ga.simple.Genome.newRandomIndividual;
 
 public class PopulationImp implements Population {
 
     private final Individual[] individuals;
 
     private PopulationImp(int populationSize) {
-        this.individuals = new ByteIndividual[populationSize];
+        this.individuals = new Genome[populationSize];
     }
 
     private PopulationImp(int populationSize, boolean initialise) {
-        individuals = new ByteIndividual[populationSize];
+        individuals = new Genome[populationSize];
         if (initialise) {
             randomIndividuals();
         }

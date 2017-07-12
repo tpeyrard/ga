@@ -1,6 +1,6 @@
 package com.tpeyrard.ga.simple;
 
-import com.tpeyrard.ga.Algorithm;
+import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.FitnessComputation;
 
 public class Main {
@@ -12,13 +12,13 @@ public class Main {
         // Create an initial population
         PopulationImp myPop = PopulationImp.newRandomPopulation(50);
 
-        final Algorithm algorithm = new BinaryAlgorithm(fitnessCalc);
+        final GeneticAlgorithm geneticAlgorithm = new BinaryAlgorithm(fitnessCalc);
         // Evolve our population until we reach an optimum solution
         int generationCount = 0;
         while (myPop.fittest(fitnessCalc).fitness(fitnessCalc) < fitnessCalc.maxFitness()) {
             generationCount++;
             System.out.println("Generation: " + generationCount + " - Fittest: " + myPop.fittest(fitnessCalc).fitness(fitnessCalc));
-            myPop = algorithm.evolvePopulation(myPop);
+            myPop = geneticAlgorithm.evolvePopulation(myPop);
         }
 
         System.out.println("--------------------------------------------------------------------");

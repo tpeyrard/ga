@@ -1,9 +1,9 @@
 package com.tpeyrard.ga;
 
-import com.tpeyrard.ga.simple.ByteIndividual;
+import com.tpeyrard.ga.simple.Genome;
 
 public interface FitnessComputation {
-    int getFitness(ByteIndividual individual);
+    int getFitness(Genome individual);
 
     int maxFitness();
 }
