@@ -6,4 +6,6 @@ public interface Individual {
     int fitness(FitnessComputation fitnessCalc);
 
     void geneFrom(int index, Individual fromIndividual);
+
+    int aptitude();
 }

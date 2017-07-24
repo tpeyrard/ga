@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class TourManager {
-    private List<City> destinationCities;
+    private final List<City> destinationCities;
 
     public TourManager() {
         this.destinationCities = new ArrayList<>();

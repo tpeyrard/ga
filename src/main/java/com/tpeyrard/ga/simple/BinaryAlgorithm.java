@@ -1,7 +1,7 @@
 package com.tpeyrard.ga.simple;
 
-import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.FitnessComputation;
+import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.Individual;
 import com.tpeyrard.ga.Population;
 
@@ -18,8 +18,8 @@ public final class BinaryAlgorithm implements GeneticAlgorithm {
     }
 
     @Override
-    public PopulationImp evolvePopulation(PopulationImp pop) {
-        final PopulationImp newPopulation = PopulationImp.emptyPopulation(pop.size());
+    public Population evolvePopulation(Population pop) {
+        final PopulationImpl newPopulation = PopulationImpl.emptyPopulation(pop.size());
 
         // Keep our best individual
         if (ELITISM) {
@@ -76,8 +76,8 @@ public final class BinaryAlgorithm implements GeneticAlgorithm {
     }
 
 
-    private Individual tournamentSelection(PopulationImp pop) {
-        final PopulationImp tournament = PopulationImp.emptyPopulation(TOURNAMENT_SIZE);
+    private Individual tournamentSelection(Population pop) {
+        final PopulationImpl tournament = PopulationImpl.emptyPopulation(TOURNAMENT_SIZE);
 
         for (int i = 0; i < TOURNAMENT_SIZE; i++) {
             int randomId = (int) (Math.random() * pop.size());

@@ -6,27 +6,27 @@ import com.tpeyrard.ga.Population;
 
 import static com.tpeyrard.ga.simple.Genome.newRandomIndividual;
 
-public class PopulationImp implements Population {
+public class PopulationImpl implements Population {
 
     private final Individual[] individuals;
 
-    private PopulationImp(int populationSize) {
+    private PopulationImpl(int populationSize) {
         this.individuals = new Genome[populationSize];
     }
 
-    private PopulationImp(int populationSize, boolean initialise) {
+    private PopulationImpl(int populationSize, boolean initialise) {
         individuals = new Genome[populationSize];
         if (initialise) {
             randomIndividuals();
         }
     }
 
-    public static PopulationImp newRandomPopulation(int populationSize) {
-        return new PopulationImp(populationSize, true);
+    public static PopulationImpl newRandomPopulation(int populationSize) {
+        return new PopulationImpl(populationSize, true);
     }
 
-    public static PopulationImp emptyPopulation(int populationSize) {
-        return new PopulationImp(populationSize);
+    public static PopulationImpl emptyPopulation(int populationSize) {
+        return new PopulationImpl(populationSize);
     }
 
     private void randomIndividuals() {

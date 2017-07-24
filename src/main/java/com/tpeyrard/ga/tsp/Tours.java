@@ -5,6 +5,16 @@ import com.tpeyrard.ga.Individual;
 import com.tpeyrard.ga.Population;
 
 public class Tours implements Population {
+    private final int individuals;
+
+    private Tours(int individuals, boolean random) {
+        this.individuals = individuals;
+    }
+
+    public static Tours newRandomPopulation(int individuals, boolean random) {
+        return new Tours(individuals, random);
+    }
+
     @Override
     public Individual individualAt(int index) {
         throw new UnsupportedOperationException();

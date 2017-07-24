@@ -60,6 +60,11 @@ public class Genome implements Individual {
     }
 
     @Override
+    public int aptitude() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public String toString() {
         StringBuilder output = new StringBuilder(genomeSize());
         for (byte gene : genes) {

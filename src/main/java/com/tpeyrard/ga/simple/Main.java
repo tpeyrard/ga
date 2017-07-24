@@ -1,7 +1,8 @@
 package com.tpeyrard.ga.simple;
 
-import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.FitnessComputation;
+import com.tpeyrard.ga.GeneticAlgorithm;
+import com.tpeyrard.ga.Population;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +11,7 @@ public class Main {
         final FitnessComputation fitnessCalc = BinaryFitness.newSolution("1111000000000000000000000000000000000000000000000000000000001111");
 
         // Create an initial population
-        PopulationImp myPop = PopulationImp.newRandomPopulation(50);
+        Population myPop = PopulationImpl.newRandomPopulation(50);
 
         final GeneticAlgorithm geneticAlgorithm = new BinaryAlgorithm(fitnessCalc);
         // Evolve our population until we reach an optimum solution

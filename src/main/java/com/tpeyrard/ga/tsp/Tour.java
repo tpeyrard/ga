@@ -18,4 +18,9 @@ public class Tour implements Individual {
     public void geneFrom(int index, Individual fromIndividual) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int aptitude() {
+        throw new UnsupportedOperationException();
+    }
 }
