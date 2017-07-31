@@ -6,8 +6,8 @@ import com.tpeyrard.ga.Individual;
 public class SalesmanFitness implements FitnessComputation {
 
     @Override
-    public int getFitness(Individual individual) {
-        throw new UnsupportedOperationException();
+    public double getFitness(Individual individual) {
+        return 1 / (double) individual.aptitude();
     }
 
     @Override

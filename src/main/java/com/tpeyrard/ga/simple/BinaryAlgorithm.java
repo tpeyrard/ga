@@ -37,30 +37,24 @@ public final class BinaryAlgorithm implements GeneticAlgorithm {
         for (int i = elitismOffset; i < pop.size(); i++) {
             final Individual indiv1 = tournamentSelection(pop);
             final Individual indiv2 = tournamentSelection(pop);
-            final Individual newIndiv = crossover(indiv1, indiv2);
+
+            final Genome newIndiv = crossover(indiv1, indiv2);
+
+            mutate(newIndiv);
+
             newPopulation.saveIndividual(i, newIndiv);
         }
-
-        mutatePopulation(newPopulation, elitismOffset);
 
         return newPopulation;
     }
 
-    private static void mutatePopulation(Population newPopulation, int elitismOffset) {
-        for (int i = elitismOffset; i < newPopulation.size(); i++) {
-            mutate(((Genome) newPopulation.individualAt(i)));
-        }
-    }
-
-
-    private static Individual crossover(Individual firstIndividual, Individual secondIndividual) {
-        Individual newSol = Genome.newIndividual();
+    private static Genome crossover(Individual firstIndividual, Individual secondIndividual) {
+        final Genome newSol = Genome.newIndividual();
         for (int i = 0; i < firstIndividual.genomeSize(); i++) {
-            // Crossover
             if (Math.random() <= UNIFORM_RATE) {
-                newSol.geneFrom(i, firstIndividual);
+                newSol.withGeneFrom(i, firstIndividual);
             } else {
-                newSol.geneFrom(i, secondIndividual);
+                newSol.withGeneFrom(i, secondIndividual);
             }
         }
         return newSol;

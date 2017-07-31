@@ -8,7 +8,7 @@ public class Genome implements Individual {
     private static final int DEFAULT_GENE_LENGTH = 64;
     private final byte[] genes;
     // Cache
-    private int fitness = 0;
+    private double fitness = 0.0;
 
     private Genome(byte[] genes) {
         this.genes = genes;
@@ -47,15 +47,15 @@ public class Genome implements Individual {
     }
 
     @Override
-    public int fitness(FitnessComputation fitnessCalc) {
-        if (fitness == 0) {
+    public double fitness(FitnessComputation fitnessCalc) {
+        if (fitness == 0.0) {
             fitness = fitnessCalc.getFitness(this);
         }
         return fitness;
     }
 
     @Override
-    public void geneFrom(int index, Individual fromIndividual) {
+    public void withGeneFrom(int index, Individual fromIndividual) {
         setGene(index, ((Genome) fromIndividual).geneAt(index));
     }
 

@@ -1,5 +1,7 @@
 package com.tpeyrard.ga.tsp;
 
+import com.google.common.collect.ImmutableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,5 +22,9 @@ public final class TourManager {
 
     public int numberOfCities() {
         return destinationCities.size();
+    }
+
+    public List<City> cities() {
+        return ImmutableList.copyOf(destinationCities);
     }
 }

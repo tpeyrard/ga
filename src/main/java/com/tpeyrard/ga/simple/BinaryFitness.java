@@ -2,7 +2,6 @@ package com.tpeyrard.ga.simple;
 
 import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.Individual;
-import com.tpeyrard.ga.tsp.Tour;
 
 public final class BinaryFitness implements FitnessComputation {
 
@@ -26,7 +25,7 @@ public final class BinaryFitness implements FitnessComputation {
     }
 
     @Override
-    public int getFitness(Individual individual) {
+    public double getFitness(Individual individual) {
         int fitness = 0;
         for (int i = 0; i < individual.genomeSize() && i < solution.length; i++) {
             if (((Genome) individual).geneAt(i) == solution[i]) {

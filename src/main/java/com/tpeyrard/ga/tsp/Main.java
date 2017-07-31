@@ -33,7 +33,7 @@ public class Main {
         FitnessComputation fitnessCalc = new SalesmanFitness();
 
         // Initialize population
-        Population pop = Tours.newRandomPopulation(50, true);
+        Population pop = Tours.newRandomPopulation(50, tourManager);
         System.out.println("Initial distance: " + pop.fittest(fitnessCalc).aptitude());
 
         GeneticAlgorithm algorithm = new SalesmanAlgorithm();

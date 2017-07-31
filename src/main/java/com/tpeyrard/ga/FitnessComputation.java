@@ -1,7 +1,7 @@
 package com.tpeyrard.ga;
 
 public interface FitnessComputation {
-    int getFitness(Individual individual);
+    double getFitness(Individual individual);
 
     int maxFitness();
 }
