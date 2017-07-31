@@ -1,19 +1,22 @@
 package com.tpeyrard.ga.tsp;
 
+import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.GeneticAlgorithm;
-import com.tpeyrard.ga.Population;
+import com.tpeyrard.ga.Individual;
 
-public class SalesmanAlgorithm implements GeneticAlgorithm {
+public class SalesmanAlgorithm extends GeneticAlgorithm {
+
+    public SalesmanAlgorithm(FitnessComputation fitnessCalc) {
+        super(fitnessCalc);
+    }
 
     @Override
-    public Population evolvePopulation(Population pop) {
-        // TODO
-        // Tournament selection 1
-        // Tournament selection 2
-        // Crossover
-        // Mutation
-        // Save individual in the new population
-        // Return the new population
+    public Individual crossover(Individual firstIndividual, Individual secondIndividual, double crossoverRate) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void mutate(Individual offspring) {
         throw new UnsupportedOperationException();
     }
 }

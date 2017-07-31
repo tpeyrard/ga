@@ -11,9 +11,11 @@ import java.util.List;
 
 public class Tours implements Population {
     private final List<Tour> tours;
+    private final TourManager tourManager;
 
     private Tours(int individuals, TourManager tourManager) {
-        tours = new ArrayList<>(individuals);
+        this.tours = new ArrayList<>(individuals);
+        this.tourManager = tourManager;
         for (int i = 0; i < individuals; i++) {
             tours.add(Tour.newRandomTour(tourManager));
         }
@@ -21,6 +23,10 @@ public class Tours implements Population {
 
     public static Tours newRandomPopulation(int numberOfCities, TourManager tourManager) {
         return new Tours(numberOfCities, tourManager);
+    }
+
+    public static Tours newEmptyPopulation(TourManager tourManager) {
+        return new Tours(0, tourManager);
     }
 
     @Override
@@ -41,5 +47,14 @@ public class Tours implements Population {
     @Override
     public void saveIndividual(int index, Individual indiv) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Population emptyPopulation(int size) {
+        return Tours.newEmptyPopulation(tourManager);
+    }
+
+    public TourManager tourManager() {
+        return tourManager;
     }
 }

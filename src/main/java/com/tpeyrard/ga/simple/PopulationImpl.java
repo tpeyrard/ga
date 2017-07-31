@@ -25,10 +25,6 @@ public class PopulationImpl implements Population {
         return new PopulationImpl(populationSize, true);
     }
 
-    public static PopulationImpl emptyPopulation(int populationSize) {
-        return new PopulationImpl(populationSize);
-    }
-
     private void randomIndividuals() {
         for (int i = 0; i < size(); i++) {
             saveIndividual(i, newRandomIndividual());
@@ -59,5 +55,10 @@ public class PopulationImpl implements Population {
     @Override
     public void saveIndividual(int index, Individual indiv) {
         individuals[index] = indiv;
+    }
+
+    @Override
+    public Population emptyPopulation(int size) {
+        return new PopulationImpl(size);
     }
 }

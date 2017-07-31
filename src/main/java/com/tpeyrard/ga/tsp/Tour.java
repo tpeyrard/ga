@@ -58,4 +58,8 @@ public class Tour implements Individual {
     public String toString() {
         return cities.stream().map(City::toString).collect(Collectors.joining(" | "));
     }
+
+    public void setCity(int index, City city) {
+        cities.set(index, city);
+    }
 }

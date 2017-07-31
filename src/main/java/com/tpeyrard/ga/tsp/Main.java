@@ -36,7 +36,7 @@ public class Main {
         Population pop = Tours.newRandomPopulation(50, tourManager);
         System.out.println("Initial distance: " + pop.fittest(fitnessCalc).aptitude());
 
-        GeneticAlgorithm algorithm = new SalesmanAlgorithm();
+        GeneticAlgorithm algorithm = new SalesmanAlgorithm(fitnessCalc);
         // Evolve population for 100 generations
         pop = algorithm.evolvePopulation(pop);
         for (int i = 0; i < 100; i++) {

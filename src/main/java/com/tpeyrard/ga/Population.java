@@ -8,4 +8,6 @@ public interface Population {
     int size();
 
     void saveIndividual(int index, Individual indiv);
+
+    Population emptyPopulation(int size);
 }
