@@ -25,8 +25,8 @@ public class Tours implements Population {
         }
     }
 
-    public static Tours newRandomPopulation(TourManager tourManager) {
-        return new Tours(tourManager.numberOfCities(), tourManager);
+    public static Tours newRandomPopulation(int populationSize, TourManager tourManager) {
+        return new Tours(populationSize, tourManager);
     }
 
     public static Tours newEmptyPopulation(TourManager tourManager, int size) {

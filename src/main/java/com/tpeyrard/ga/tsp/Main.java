@@ -35,7 +35,7 @@ public class Main {
         FitnessComputation fitnessCalc = new SalesmanFitness();
 
         // Initialize population
-        Population pop = Tours.newRandomPopulation(tourManager);
+        Population pop = Tours.newRandomPopulation(50, tourManager);
         int fittest = pop.fittest(fitnessCalc).aptitude();
         System.out.println("Initial distance: " + fittest);
 
