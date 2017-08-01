@@ -4,6 +4,8 @@ import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.Individual;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class SalesmanAlgorithm extends GeneticAlgorithm {
 
     private final TourManager tourManager;
@@ -21,18 +23,15 @@ public class SalesmanAlgorithm extends GeneticAlgorithm {
     }
 
     private Individual orderedCrossover(Tour offspring, Individual firstParent, Individual secondParent) {
-        final int startPos = (int) (Math.random() * firstParent.genomeSize());
-        final int endPos = (int) (Math.random() * firstParent.genomeSize());
+        final ThreadLocalRandom localRandom = ThreadLocalRandom.current();
+        final int tempStartPos = localRandom.nextInt(firstParent.genomeSize() + 1);
+        final int tempEndPos = localRandom.nextInt(firstParent.genomeSize() + 1);
 
-        for (int i = 0; i < offspring.genomeSize(); i++) {
-            if (startPos < endPos && startPos < i && i < endPos) {
-                offspring.setCity(i, firstParent.gene(i));
-            } else if (endPos < startPos) {
-                boolean positionInSubset = endPos < i && i < startPos;
-                if (!positionInSubset) {
-                    offspring.setCity(i, firstParent.gene(i));
-                }
-            }
+        final int startPos = Math.min(tempStartPos, tempEndPos);
+        final int endPos = Math.max(tempStartPos, tempEndPos);
+
+        for (int i = startPos; i < endPos; i++) {
+            offspring.setCity(i, firstParent.gene(i));
         }
 
         for (int i = 0; i < secondParent.genomeSize(); i++) {
