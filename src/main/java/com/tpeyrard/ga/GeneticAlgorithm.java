@@ -4,7 +4,7 @@ public abstract class GeneticAlgorithm {
     protected static final boolean ELITISM = true;
     protected static final int ELITISM_OFFSET = ELITISM ? 1 : 0;
     protected static final double UNIFORM_RATE = 0.5;
-    protected static final double MUTATION_RATE = 0.015;
+    protected static final double MUTATION_RATE = 0.025;
     protected static final int TOURNAMENT_SIZE = 5;
     protected final FitnessComputation fitnessCalc;
 

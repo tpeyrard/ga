@@ -1,5 +1,6 @@
 package com.tpeyrard.ga.tsp;
 
+import com.google.common.base.Stopwatch;
 import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.GeneticAlgorithm;
 import com.tpeyrard.ga.Population;
@@ -7,7 +8,8 @@ import com.tpeyrard.ga.Population;
 public class Main {
     public static void main(String[] args) {
 
-        // Create and add our cities
+        final Stopwatch stopwatch = Stopwatch.createStarted();
+
         TourManager tourManager = new TourManager();
         tourManager.addCity(new City(60, 200));
         tourManager.addCity(new City(180, 200));
@@ -33,18 +35,19 @@ public class Main {
         FitnessComputation fitnessCalc = new SalesmanFitness();
 
         // Initialize population
-        Population pop = Tours.newRandomPopulation(50, tourManager);
-        System.out.println("Initial distance: " + pop.fittest(fitnessCalc).aptitude());
+        Population pop = Tours.newRandomPopulation(tourManager);
+        int fittest = pop.fittest(fitnessCalc).aptitude();
+        System.out.println("Initial distance: " + fittest);
 
-        GeneticAlgorithm algorithm = new SalesmanAlgorithm(fitnessCalc);
-        // Evolve population for 100 generations
-        pop = algorithm.evolvePopulation(pop);
-        for (int i = 0; i < 100; i++) {
+        GeneticAlgorithm algorithm = new SalesmanAlgorithm(fitnessCalc, tourManager);
+
+        for (int i = 0; i < 1000; i++) {
             pop = algorithm.evolvePopulation(pop);
         }
 
-        // Print final results
-        System.out.println("Finished");
+        stopwatch.stop();
+
+        System.out.println("Finished. Took " + stopwatch);
         System.out.println("Final distance: " + pop.fittest(fitnessCalc).aptitude());
         System.out.println("Solution:");
         System.out.println(pop.fittest(fitnessCalc));

@@ -1,6 +1,7 @@
 package com.tpeyrard.ga.tsp;
 
 public final class City {
+    public static final City NO_CITY = new City(Integer.MIN_VALUE, Integer.MIN_VALUE);
     private final int x;
     private final int y;
 

@@ -8,4 +8,8 @@ public interface Individual {
     void withGeneFrom(int index, Individual fromIndividual);
 
     int aptitude();
+
+    default Object gene(int index) {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -4,6 +4,7 @@ import com.tpeyrard.ga.FitnessComputation;
 import com.tpeyrard.ga.Individual;
 import org.assertj.core.util.Lists;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,15 +15,24 @@ public class Tour implements Individual {
     private double fitness = 0.0;
     private int distance = 0;
 
-    private Tour(TourManager tourManager) {
+    private Tour(TourManager tourManager, List<City> cities) {
+        this.cities = cities;
         this.tourManager = tourManager;
-        this.cities = Lists.newArrayList(tourManager.cities());
+    }
+
+    private Tour(TourManager tourManager) {
+        this(tourManager, Lists.newArrayList(tourManager.cities()));
 
         Collections.shuffle(this.cities);
     }
 
     public static Tour newRandomTour(TourManager tourManager) {
         return new Tour(tourManager);
+    }
+
+    public static Tour tourWithNoCity(TourManager tourManager) {
+        List<City> cities = new ArrayList<>(Collections.nCopies(tourManager.numberOfCities(), City.NO_CITY));
+        return new Tour(tourManager, cities);
     }
 
     @Override
@@ -55,11 +65,24 @@ public class Tour implements Individual {
     }
 
     @Override
-    public String toString() {
-        return cities.stream().map(City::toString).collect(Collectors.joining(" | "));
+    public City gene(int index) {
+        return cities.get(index);
     }
 
-    public void setCity(int index, City city) {
-        cities.set(index, city);
+    @Override
+    public String toString() {
+        return cities.stream().map(City::toString).collect(Collectors.joining("|"));
+    }
+
+    public void setCity(int index, Object city) {
+        cities.set(index, ((City) city));
+    }
+
+    public boolean containsCity(City city) {
+        return cities.contains(city);
+    }
+
+    public void swap(int firstPosition, int secondPosition) {
+        Collections.swap(cities, firstPosition, secondPosition);
     }
 }

@@ -13,20 +13,24 @@ public class Tours implements Population {
     private final List<Tour> tours;
     private final TourManager tourManager;
 
+    private Tours(TourManager tourmanager, List<Tour> tours) {
+        tourManager = tourmanager;
+        this.tours = tours;
+    }
+
     private Tours(int individuals, TourManager tourManager) {
-        this.tours = new ArrayList<>(individuals);
-        this.tourManager = tourManager;
+        this(tourManager, new ArrayList<>(individuals));
         for (int i = 0; i < individuals; i++) {
             tours.add(Tour.newRandomTour(tourManager));
         }
     }
 
-    public static Tours newRandomPopulation(int numberOfCities, TourManager tourManager) {
-        return new Tours(numberOfCities, tourManager);
+    public static Tours newRandomPopulation(TourManager tourManager) {
+        return new Tours(tourManager.numberOfCities(), tourManager);
     }
 
-    public static Tours newEmptyPopulation(TourManager tourManager) {
-        return new Tours(0, tourManager);
+    public static Tours newEmptyPopulation(TourManager tourManager, int size) {
+        return new Tours(tourManager, new ArrayList<>(Collections.nCopies(size, null)));
     }
 
     @Override
@@ -46,15 +50,12 @@ public class Tours implements Population {
 
     @Override
     public void saveIndividual(int index, Individual indiv) {
-        throw new UnsupportedOperationException();
+        tours.set(index, ((Tour) indiv));
     }
 
     @Override
     public Population emptyPopulation(int size) {
-        return Tours.newEmptyPopulation(tourManager);
+        return Tours.newEmptyPopulation(tourManager, size);
     }
 
-    public TourManager tourManager() {
-        return tourManager;
-    }
 }
