@@ -11,26 +11,26 @@ public class Main {
         final Stopwatch stopwatch = Stopwatch.createStarted();
 
         TourManager tourManager = new TourManager();
-        tourManager.addCity(new City(60, 200));
-        tourManager.addCity(new City(180, 200));
-        tourManager.addCity(new City(80, 180));
-        tourManager.addCity(new City(140, 180));
-        tourManager.addCity(new City(20, 160));
-        tourManager.addCity(new City(100, 160));
-        tourManager.addCity(new City(200, 160));
-        tourManager.addCity(new City(140, 140));
-        tourManager.addCity(new City(40, 120));
-        tourManager.addCity(new City(100, 120));
-        tourManager.addCity(new City(180, 100));
-        tourManager.addCity(new City(60, 80));
-        tourManager.addCity(new City(120, 80));
-        tourManager.addCity(new City(180, 60));
-        tourManager.addCity(new City(20, 40));
-        tourManager.addCity(new City(100, 40));
-        tourManager.addCity(new City(200, 40));
-        tourManager.addCity(new City(20, 20));
-        tourManager.addCity(new City(60, 20));
-        tourManager.addCity(new City(160, 20));
+        tourManager.addCity(new City(200, 100, 0));
+        tourManager.addCity(new City(195, 130, 1));
+        tourManager.addCity(new City(180, 158, 2));
+        tourManager.addCity(new City(158, 180, 3));
+        tourManager.addCity(new City(130, 195, 4));
+        tourManager.addCity(new City(100, 200, 5));
+        tourManager.addCity(new City(69, 195, 6));
+        tourManager.addCity(new City(41, 180, 7));
+        tourManager.addCity(new City(19, 158, 8));
+        tourManager.addCity(new City(4, 130, 9));
+        tourManager.addCity(new City(0, 100, 10));
+        tourManager.addCity(new City(4, 69, 11));
+        tourManager.addCity(new City(19, 41, 12));
+        tourManager.addCity(new City(41, 19, 13));
+        tourManager.addCity(new City(69, 4, 14));
+        tourManager.addCity(new City(99, 0, 15));
+        tourManager.addCity(new City(130, 4, 16));
+        tourManager.addCity(new City(158, 19, 17));
+        tourManager.addCity(new City(180, 41, 18));
+        tourManager.addCity(new City(195, 69, 19));
 
         FitnessComputation fitnessCalc = new SalesmanFitness();
 
@@ -41,7 +41,7 @@ public class Main {
 
         GeneticAlgorithm algorithm = new SalesmanAlgorithm(fitnessCalc, tourManager);
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 500; i++) {
             pop = algorithm.evolvePopulation(pop);
         }
 

@@ -1,26 +1,16 @@
 package com.tpeyrard.ga.tsp;
 
 public final class City {
-    public static final City NO_CITY = new City(Integer.MIN_VALUE, Integer.MIN_VALUE);
+    public static final City NO_CITY = new City(Integer.MIN_VALUE, Integer.MIN_VALUE, -1);
     private final int x;
     private final int y;
+    private final int id;
 
 
-    public City() {
-        this((int) (Math.random() * 200), (int) (Math.random() * 200));
-    }
-
-    public City(int x, int y) {
+    public City(int x, int y, int id) {
         this.x = x;
         this.y = y;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
+        this.id = id;
     }
 
     public double distanceTo(City city) {
@@ -32,6 +22,6 @@ public final class City {
 
     @Override
     public String toString() {
-        return this.x + ", " + this.y;
+        return String.valueOf(this.id);
     }
 }
